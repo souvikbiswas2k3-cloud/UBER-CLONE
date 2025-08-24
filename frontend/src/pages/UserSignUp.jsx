@@ -114,16 +114,12 @@ const UserSignup = () => {
           <p className='text-center'>Already have a account? <Link to='/login' className='text-blue-600'>Login here</Link></p>
         </div>
         <div>
-          <Link
-            to='/captain-signup'
-            className='bg-[#10b461] flex items-center justify-center mb-5 text-white font-semibold rounded px-3 py-2 w-full text-lg'
-          >
-            Sign up as Captain
-          </Link>
+          <p className='text-[10px] leading-tight'>This site is protected by reCAPTCHA and the <span className='underline'>Google Privacy
+            Policy</span> and <span className='underline'>Terms of Service apply</span>.</p>
         </div>
       </div>
     </div >
   )
 }
 
-export default UserSignup 
+export default UserSignup

@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import { Link } from 'react-router-dom'
 import { useNavigate } from 'react-router-dom'
 import axios from 'axios'
-import { CaptainDataContext } from '../context/CaptainContext'
+import { CaptainDataContext } from '../context/CapatainContext'
 
 const Captainlogin = () => {
 
@@ -76,10 +76,9 @@ const Captainlogin = () => {
       </div>
       <div>
         <Link
-        to={'/login'}
-         className='bg-[#2222e7f0] flex items-center justify-center mb-5 text-white font-semibold rounded px-3 py-2 w-full text-lg placeholder:text-base'>
-          Sign in as User 
-        </Link>
+          to='/login'
+          className='bg-[#d5622d] flex items-center justify-center text-white font-semibold mb-5 rounded-lg px-4 py-2 w-full text-lg placeholder:text-base'
+        >Sign in as User</Link>
       </div>
     </div>
   )
