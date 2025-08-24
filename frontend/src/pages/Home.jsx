@@ -5,6 +5,7 @@ import 'remixicon/fonts/remixicon.css'
 import LocationSearchPanel from '../components/LocationSearchPanel'
 import VehiclePanel from '../components/VehiclePanel'
 import ConfirmRide from '../components/ConfirmRide'
+import LookingForDriver from '../components/LookingForDriver'
 
 const home = () => {
     const [pickup, setPickup] = useState('')
@@ -17,6 +18,8 @@ const home = () => {
     const vehicle = useRef(null)
     const [ConfirmRidePanel, setConfirmRidePanel] = useState(false)
     const Confirm = useRef(null)
+    const [vehicleFound, setVehicleFound] = useState(false)
+    const vehicleFnd = useRef(null)
     const submitHandler = (e) => {
 
         e.preventDefault()
@@ -73,6 +76,28 @@ const home = () => {
         })
         }
     },[ConfirmRidePanel])
+
+    useGSAP(() => {
+        if(vehicleFound){
+            gsap.to(vehicleFnd.current, {
+            transform:'translateY(0)'
+        })
+        }
+        else{
+            gsap.to(vehicleFnd.current, {
+            transform:'translateY(100%)'
+        })
+        }
+    },[vehicleFound])
+
+    useGSAP(() => {
+    if (ConfirmRidePanel) {
+        setVehiclePanel(false)
+    }
+    }, [ConfirmRidePanel])
+
+    
+
   return (
     <div className='h-screen relative overflow-hidden'>
         <img className='w-16 absolute left-5 top-5' src="https://upload.wikimedia.org/wikipedia/commons/c/cc/Uber_logo_2018.png" alt="" />
@@ -128,11 +153,11 @@ const home = () => {
             <VehiclePanel setConfirmRidePanel={setConfirmRidePanel} setVehiclePanel={setVehiclePanel}/>
         </div>
         <div ref={Confirm} className="fixed z-10 bottom-0 w-full translate-y-full px-3 py-6 bg-white pt-12">
-            <ConfirmRide setConfirmRidePanel={setConfirmRidePanel}/>
+            <ConfirmRide setConfirmRidePanel={setConfirmRidePanel} setVehicleFound={setVehicleFound} setVehiclePanel={setVehiclePanel}/>
         </div>
-
-
-
+        <div ref={vehicleFnd} className="fixed z-10 bottom-0 w-full translate-y-full px-3 py-6 bg-white pt-12">
+            <LookingForDriver setConfirmRidePanel={setConfirmRidePanel}/>
+        </div>
     </div>
   )
 }
